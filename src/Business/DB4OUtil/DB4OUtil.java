@@ -36,16 +36,18 @@ public class DB4OUtil {
         try {
 
             EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
-            config.common().add(new TransparentPersistenceSupport());
+            // Change to the object you want to save
+            System.out.println(FILENAME);
+            ObjectContainer db = Db4oEmbedded.openFile(config, FILENAME);
+            
+             config.common().add(new TransparentPersistenceSupport());
             //Controls the number of objects in memory
             config.common().activationDepth(Integer.MAX_VALUE);
             //Controls the depth/level of updation of Object
             config.common().updateDepth(Integer.MAX_VALUE);
 
             //Register your top most Class here
-            config.common().objectClass(EcoSystem.class).cascadeOnUpdate(true); // Change to the object you want to save
-
-            ObjectContainer db = Db4oEmbedded.openFile(config, FILENAME);
+            config.common().objectClass(EcoSystem.class).cascadeOnUpdate(true);
             return db;
         } catch (Exception ex) {
             System.out.print(ex.getMessage());
