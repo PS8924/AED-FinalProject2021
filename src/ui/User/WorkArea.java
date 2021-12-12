@@ -5,6 +5,9 @@
  */
 package ui.User;
 
+import Business.Enterprise.Enterprise;
+import javax.swing.JPanel;
+
 /**
  *
  * @author User
@@ -14,8 +17,12 @@ public class WorkArea extends javax.swing.JPanel {
     /**
      * Creates new form WorkArea
      */
-    public WorkArea() {
+    private JPanel userProcessContainer;
+    private Enterprise enterprise;
+    public WorkArea(JPanel userProcessContainer,Enterprise enterprise) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
     }
 
     /**

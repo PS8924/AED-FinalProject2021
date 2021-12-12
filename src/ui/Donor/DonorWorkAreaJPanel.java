@@ -5,6 +5,9 @@
  */
 package ui.Donor;
 
+import Business.Enterprise.Enterprise;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Shah's
@@ -14,8 +17,12 @@ public class DonorWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DonorWorkAreaJPanel
      */
-    public DonorWorkAreaJPanel() {
+    private JPanel userProcessContainer;
+    private Enterprise enterprise;
+    public DonorWorkAreaJPanel(JPanel userProcessContainer,Enterprise enterprise) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
     }
 
     /**
