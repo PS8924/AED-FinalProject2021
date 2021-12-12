@@ -12,14 +12,12 @@ import java.util.ArrayList;
  *
  * @author krishna mayavat
  */
-public class HospitalEnterprise extends Enterprise {
-    
-    public HospitalEnterprise(String name){
-        super(name,EnterpriseType.Hospital);
+public class UserEnterprise extends Enterprise{
+    public UserEnterprise(String name){
+        super(name,Enterprise.EnterpriseType.User);
     }
     @Override
     public ArrayList<Role> getSupportedRole() {
         return null;
     }
-    
 }
