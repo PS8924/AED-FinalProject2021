@@ -9,30 +9,35 @@ import Business.Enterprise.EnterpriseDirectory;
 
 /**
  *
- * @author MyPC1
+ * @author heer
  */
-public class Network {
-    private String name;
-    private EnterpriseDirectory enterpriseDirectory;
-    
-    public Network(){
-        enterpriseDirectory=new EnterpriseDirectory();
+public class Network 
+{
+private String Name;    
+private EnterpriseDirectory ep;
+
+    public Network() {
+        ep=new EnterpriseDirectory();
     }
+
     public String getName() {
-        return name;
+        return Name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
-    public EnterpriseDirectory getEnterpriseDirectory() {
-        return enterpriseDirectory;
+    public EnterpriseDirectory getEp() {
+        return ep;
     }
-    
-    @Override
-    public String toString(){
-        return name;
+
+    public void setEp(EnterpriseDirectory ep) {
+        this.ep = ep;
+    }
+    public String toString()
+    {
+        return Name;
     }
     
 }

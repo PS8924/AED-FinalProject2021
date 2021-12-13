@@ -6,28 +6,27 @@
 package Business;
 
 import Business.Network.Network;
-import Business.Organization.Organization;
+import Business.Organizations.Organizations;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
 import java.util.ArrayList;
 
 /**
  *
- * @author MyPC1
+ * @author Shah's
  */
-public class EcoSystem extends Organization{
-    
-    private static EcoSystem business;
+public class EcoSystem extends Organizations {
+    private static EcoSystem OPTN;
     private ArrayList<Network> networkList;
-    public static EcoSystem getInstance(){
-        if(business==null){
-            business=new EcoSystem();
-        }
-        return business;
+    public static EcoSystem getInstance()
+    {
+        if(OPTN==null)
+            OPTN=new EcoSystem();
+            return OPTN;
     }
-    
-    public Network createAndAddNetwork(){
-        Network network=new Network();
+    public Network createAndAddNetwork()
+    {
+        Network network = new Network();
         networkList.add(network);
         return network;
     }
@@ -37,7 +36,8 @@ public class EcoSystem extends Organization{
         roleList.add(new SystemAdminRole());
         return roleList;
     }
-    private EcoSystem(){
+    private EcoSystem()
+    {
         super(null);
         networkList=new ArrayList<Network>();
     }
@@ -49,7 +49,6 @@ public class EcoSystem extends Organization{
     public void setNetworkList(ArrayList<Network> networkList) {
         this.networkList = networkList;
     }
-    
     public boolean checkIfUserIsUnique(String userName){
         if(!this.getUserAccountDirectory().checkIfUsernameIsUnique(userName)){
             return false;

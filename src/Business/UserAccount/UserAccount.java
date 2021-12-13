@@ -1,31 +1,93 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package Business.UserAccount;
 
-import Business.Employee.Employee;
+import Business.Doctor.Doctor;
 import Business.Role.Role;
+import Business.Patient.patient;
+import Business.Donor.Donor;
+import static Business.Enterprise.Enterprise.EnterpriseType.User;
+import Business.User.User;
 import Business.WorkQueue.WorkQueue;
 
 /**
  *
- * @author raunak
+ * @author krishnamayavat
  */
-public class UserAccount {
-    
+public class UserAccount 
+{
+   
     private String username;
     private String password;
-    private Employee employee;
     private Role role;
-    private WorkQueue workQueue;
+    private String securityQ;
+    private String Phnumb;
+    private int val =0;
 
-    public UserAccount() {
-        workQueue = new WorkQueue();
+    public int getVal() {
+        return val;
     }
-    
-    
-    
+
+    public void setVal(int val) {
+        this.val = val;
+    }
+
+    public String getPhnumb() {
+        return Phnumb;
+    }
+
+    public void setPhnumb(String Phnumb) {
+        this.Phnumb = Phnumb;
+    }
+
+    public String getSecurityQ() {
+        return securityQ;
+    }
+
+    public void setSecurityQ(String securityQ) {
+        this.securityQ = securityQ;
+    }
+
+    public String getSecurityA() {
+        return securityA;
+    }
+
+    public void setSecurityA(String securityA) {
+        this.securityA = securityA;
+    }
+    private String securityA;
+    private WorkQueue workQueue;
+    private WorkQueue cq;
+    private WorkQueue ClaimMoney;
+    private User user;
+   
+    public UserAccount() {
+        
+        workQueue = new WorkQueue();
+        cq= new WorkQueue();
+        ClaimMoney =new WorkQueue();
+        
+    }
+
+    public WorkQueue getClaimMoney() {
+        return ClaimMoney;
+    }
+
+    public void setClaimMoney(WorkQueue ClaimMoney) {
+        this.ClaimMoney = ClaimMoney;
+    }
+
+    public WorkQueue getCq() {
+        return cq;
+    }
+
+    public void setCq(WorkQueue cq) {
+        this.cq = cq;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -46,21 +108,27 @@ public class UserAccount {
         return role;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
     public void setRole(Role role) {
         this.role = role;
-    }
-
-    public Employee getEmployee() {
-        return employee;
     }
 
     public WorkQueue getWorkQueue() {
         return workQueue;
     }
+
+    public void setWorkQueue(WorkQueue workQueue) {
+        this.workQueue = workQueue;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    
 
     
     
@@ -68,7 +136,4 @@ public class UserAccount {
     public String toString() {
         return username;
     }
-    
-    
-    
 }

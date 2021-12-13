@@ -5,36 +5,59 @@
  */
 package Business.Enterprise;
 
-import Business.Organization.OrganizationDirectory;
+import Business.Donor.Donor;
 import java.util.ArrayList;
 
 /**
  *
- * @author MyPC1
+ * @author Shah's
  */
 public class EnterpriseDirectory {
-    private ArrayList<Enterprise> enterpriseList;
-   
-
-    public ArrayList<Enterprise> getEnterpriseList() {
-        return enterpriseList;
-    }
-
-    public void setEnterpriseList(ArrayList<Enterprise> enterpriseList) {
-        this.enterpriseList = enterpriseList;
-    }
+    
+    private ArrayList<Enterprise> enterpriselist;
     
     public EnterpriseDirectory(){
-        enterpriseList=new ArrayList<Enterprise>();
+    
+        enterpriselist = new ArrayList<>();
+        
+    } 
+
+    public ArrayList<Enterprise> getEnterpriselist() {
+        return enterpriselist;
+    }
+
+    public void setEnterpriselist(ArrayList<Enterprise> enterpriselist) {
+        this.enterpriselist = enterpriselist;
+    }
+   /* 
+    public Enterprise addEnterprise() {
+    Enterprise enterprise=new Enterprise();
+    enterpriselist.add(enterprise);
+    return enterprise;
     }
     
-    //Create enterprise
+    
+    
+    public void removeEnterprise(Enterprise enterprise) {
+        enterpriselist.remove(enterprise);
+    }
+   */
     public Enterprise createAndAddEnterprise(String name,Enterprise.EnterpriseType type){
         Enterprise enterprise=null;
         if(type==Enterprise.EnterpriseType.Hospital){
             enterprise=new HospitalEnterprise(name);
-            enterpriseList.add(enterprise);
+            enterpriselist.add(enterprise);
         }
+        else if(type==Enterprise.EnterpriseType.User){
+            enterprise=new UserEnterprise(name);
+            enterpriselist.add(enterprise);
+        }
+        else if(type==Enterprise.EnterpriseType.NGO){
+            enterprise= new NGOEnterprise(name);
+            enterpriselist.add(enterprise);}
+        else if(type==Enterprise.EnterpriseType.pharmacy){
+            enterprise= new PharmacyEnterprise(name);
+            enterpriselist.add(enterprise);}
         return enterprise;
     }
 }

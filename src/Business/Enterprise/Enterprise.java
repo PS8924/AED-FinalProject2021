@@ -1,28 +1,39 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package Business.Enterprise;
 
-import Business.Organization.Organization;
-import Business.Organization.OrganizationDirectory;
-
 /**
  *
- * @author MyPC1
+ * @author Shah's
  */
-public abstract class Enterprise extends Organization{
-    
-    private EnterpriseType enterpriseType;
-    private OrganizationDirectory organizationDirectory;
 
-    public OrganizationDirectory getOrganizationDirectory() {
-        return organizationDirectory;
+import Business.Organizations.OrganizationDirectory;
+import Business.Organizations.Organizations;
+import Business.Role.Role;
+import java.util.ArrayList;
+
+
+public abstract class Enterprise extends Organizations {
+        
+ //   private int id;
+ //   private String name;
+ //   private ArrayList<String> organlist;
+ //   private EnterpriseDirectory enterpriseDir;
+    private OrganizationDirectory organizationdir;
+ //   private static int counter =1;
+    private EnterpriseType enterpriseType;
+
+    public OrganizationDirectory getOrganizationdir() {
+        return organizationdir;
     }
-    
     public enum EnterpriseType{
-        Hospital("Hospital");
+        Hospital("Hospital"),
+        User("User"),
+        NGO("NGO"),
+        pharmacy("Pharmacy");
         
         private String value;
         
@@ -37,18 +48,50 @@ public abstract class Enterprise extends Organization{
         return value;
     }
     }
-
     public EnterpriseType getEnterpriseType() {
         return enterpriseType;
     }
-
-    public void setEnterpriseType(EnterpriseType enterpriseType) {
+     public void setEnterpriseType(EnterpriseType enterpriseType) {
         this.enterpriseType = enterpriseType;
     }
+
     
+     
     public Enterprise(String name,EnterpriseType type){
-        super(name);
-        this.enterpriseType=type;
-        organizationDirectory=new OrganizationDirectory();
+    super(name);
+    this.enterpriseType=type;
+    organizationdir=new OrganizationDirectory();
+   // enterpriseDir = new EnterpriseDirectory();
     }
+
+   /*
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    
+
+    public ArrayList<String> getOrganlist() {
+        return organlist;
+    }
+
+    public void setOrganlist(ArrayList<String> organlist) {
+        this.organlist = organlist;
+    }
+
+    public String toString()
+    {
+        return name;
+    }
+
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    */
+
 }
