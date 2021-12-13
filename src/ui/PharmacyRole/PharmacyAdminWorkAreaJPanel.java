@@ -2,7 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package ui.PharmacyRole;
+package UserInterface.PharmacyRole;
+
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Network.Network;
+import Business.Organizations.OrganizationDirectory;
+import Business.Organizations.Organizations;
+import Business.UserAccount.UserAccount;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,8 +22,15 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form PharmacyAdminWorkAreaJPanel
      */
-    public PharmacyAdminWorkAreaJPanel() {
+    private JPanel userProcessContainer;
+    private OrganizationDirectory organizationdir;
+    private EcoSystem system;
+    private Enterprise enterprise;
+    public PharmacyAdminWorkAreaJPanel(JPanel userProcessContainer,Enterprise enterprise) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+         //populateTable();
     }
 
     /**
@@ -28,7 +44,6 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        btnviewstock = new javax.swing.JButton();
         btnvieworder = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
@@ -36,9 +51,7 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jButton1.setText("Logout");
 
-        btnviewstock.setText("View Stocks");
-
-        btnvieworder.setText("View Orders");
+        btnvieworder.setText("View Medicine stocks");
         btnvieworder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnvieworderActionPerformed(evt);
@@ -55,38 +68,34 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
                         .addGap(185, 185, 185)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(btnvieworder, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(100, 100, 100)
-                        .addComponent(btnviewstock, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(218, 218, 218)
+                        .addComponent(btnvieworder, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(254, 254, 254)
+                        .addGap(275, 275, 275)
                         .addComponent(jButton1)))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(292, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(76, 76, 76)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnvieworder, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnviewstock, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(126, 126, 126)
+                .addGap(111, 111, 111)
+                .addComponent(btnvieworder, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(99, 99, 99)
                 .addComponent(jButton1)
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnvieworderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvieworderActionPerformed
         // TODO add your handling code here:
+        PharamacyData examples=new PharamacyData();
     }//GEN-LAST:event_btnvieworderActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnvieworder;
-    private javax.swing.JButton btnviewstock;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
