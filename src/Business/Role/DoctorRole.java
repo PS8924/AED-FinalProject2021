@@ -17,8 +17,11 @@ import javax.swing.JPanel;
  * @author raunak
  */
 public class DoctorRole extends Role{
+    
+    
+
+}
 
     
     
     
-}
