@@ -18,8 +18,12 @@ public abstract class Role {
     
     public enum RoleType{
         Admin("Admin"),
+        UserAdmin("UserAdmin"),
         Doctor("Doctor"),
-        LabAssistant("Lab Assistant");
+        Donor("Donor"),
+        Patient("Patient"),
+        NGOAdminRole("NGO Admin"),
+        NGOVolunteer("NGO Volunteer");
         
         private String value;
         private RoleType(String value){
@@ -45,7 +49,5 @@ public abstract class Role {
     @Override
     public String toString() {
         return this.getClass().getName();
-    }
-    
-    
+    }   
 }

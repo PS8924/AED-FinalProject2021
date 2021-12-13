@@ -120,59 +120,50 @@ public class WelcomeJPanel extends javax.swing.JPanel {
             //jLabel4.setForeground(Color.BLACK);
         }
         UserAccount userAccount = system.getUserAccountDirectory().authenticateUser(username, password);
-
-        Enterprise inEnterprise = null;
-        Organization inOrganization = null;
-        Network inNetwork = null;
-        
-        if (userAccount == null) {
-            //Step 2: Go inside each network and check each enterprise
-            for (Network network : system.getNetworkList()) {
-
-                //Step 2.a: check against each enterprise
-                for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-                    userAccount = enterprise.getUserAccountDirectory().authenticateUser(username, password);
-                    if (userAccount == null) {
-                        //Step 3:check against each organization for each enterprise
-                        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-                            userAccount = organization.getUserAccountDirectory().authenticateUser(username, password);
-                            if (userAccount != null) {
-                                inNetwork = network;
-                                inEnterprise = enterprise;
-                                //System.out.println(inNetwork);
-                                //System.out.println(inEnterprise);
-                                inOrganization = organization;
-                                //System.out.println(inOrganization);
-                                break;
-                            }
-                        }
-
-                    } else {
-                        inEnterprise = enterprise;
-                        inNetwork = network;
-                        //System.out.println(inEnterprise);
+        Enterprise enterprise =null;
+        Organization org =null;
+        if(userAccount==null)
+        {
+            for(Network network :system.getNetworkList())
+            {
+                for(Enterprise e:network.getEnterpriseDirectory().getEnterpriseList())
+                {
+                   userAccount=e.getUserAccountDirectory().authenticateUser(username, password);
+                   if(userAccount==null)
+                   {
+                       for(Organization o:e.getOrganizationDirectory().getOrganizationList())
+                       {
+                           userAccount=o.getUserAccountDirectory().authenticateUser(username, password);
+                           if(userAccount!=null)
+                           {
+                               enterprise=e;
+                               org=o;
+                               break;
+                           }
+                       }
+                   }
+                   else 
+                    {
+                        enterprise=e;
                         break;
                     }
-                    if (inOrganization != null) {
-                        //System.out.println(inOrganization);
-                        break;
-                    }
+                if(org!=null)
+                break;
                 }
-                if (inEnterprise != null) {
-                    //System.out.println(inEnterprise);
+                if(enterprise!=null)
                     break;
-                }
+            
             }
         }
-
-        if (userAccount == null) {
-//            jLabel3.setForeground(Color.RED);
-//            jLabel4.setForeground(Color.RED);
-            JOptionPane.showMessageDialog(null, "Invalid Credentials! Please re-enter!");
+        if(userAccount==null)
+        {
+            JOptionPane.showMessageDialog(null,"Invalid Credentials");
             return;
-        } else {
-            userProcessContainer.add("workArea", userAccount.getRole().createWorkArea(userProcessContainer, userAccount, inOrganization, inEnterprise, system));
-            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        }
+        else 
+        {
+            CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+            userProcessContainer.add("workArea", userAccount.getRole().createWorkArea(userProcessContainer, userAccount, org, enterprise, system));
             layout.next(userProcessContainer);
         }
     }//GEN-LAST:event_btnLoginActionPerformed
